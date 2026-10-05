@@ -29,7 +29,7 @@ It is live in Chinese, English and Japanese.
 ## How it is built
 
 ```mermaid
-flowchart LR
+flowchart TD
   S[Public sources<br/>feeds · filings · official APIs] --> C[Collection<br/>pg-boss jobs]
   C --> D[Document worker<br/>extraction · entities · topics]
   D --> E[Evidence engine<br/>claims · deterministic classing]

@@ -27,7 +27,7 @@ AiSeek 持续读取 24 个领域的公开来源，覆盖技术、经济、市场
 ## 技术设计
 
 ```mermaid
-flowchart LR
+flowchart TD
   S[公开来源<br/>订阅源 · 公告 · 官方接口] --> C[采集<br/>pg-boss 任务]
   C --> D[文档服务<br/>抽取 · 实体 · 主题]
   D --> E[证据引擎<br/>论断 · 规则定级]
