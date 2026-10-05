@@ -6,7 +6,7 @@ AiSeek reads public sources across 24 domains — technology, economy, markets, 
 what changed into a structure you can check: who it touches, how they are connected, and the evidence behind every link.
 It is live in Chinese, English and Japanese.
 
-![Company structure map](screenshots/company.png)
+![Home page](screenshots/home-hero.png)
 
 > This repository is a showcase. The product source is private; the excerpts in [`excerpts/`](excerpts/) are taken from it unchanged.
 
@@ -14,17 +14,36 @@ It is live in Chinese, English and Japanese.
 
 - **Signals.** Each change is a signal with its sources, evidence count and a short "why it matters".
 - **Structure.** Entities and relations around a company, topic or signal, drawn as a map. Solid lines are facts, dashed lines are
-  hypotheses, and the two are never mixed.
+  supported inferences, dotted lines are hypotheses, and the three are never mixed.
 - **Evidence first.** Every relation points to a claim, and every fact points to the passage it came from.
 - **Research.** Signed-in users can run a multi-step research workflow on a signal or company and watch it stream in.
 - **Brief, Ahead, Markets.** A daily brief, a calendar of official statistics releases, and FX and macro data.
 
-| | |
-|---|---|
-| ![Signal](screenshots/signal.png) | ![Topic](screenshots/topic.png) |
-| ![Chinese home page](screenshots/home-zh.png) | ![Markets](screenshots/markets.png) |
+## A look around
 
-<img src="screenshots/mobile-home.jpg" width="280" alt="Home page on a phone">
+**Structure of a company.** Who supplies it, who it serves, who it competes and partners with, who owns it and what constrains it.
+
+![Company structure map](screenshots/company.png)
+
+**The home feed.** Lead changes, a live wire of everything new, and the day's threads across domains.
+
+![Home feed](screenshots/home-feed.png)
+
+**A signal.** What happened, why it matters, and every source behind it.
+
+![Signal page](screenshots/signal.png)
+
+**Markets.** FX with 30-day and three-month views, daily movers and a full cross-rate table.
+
+![Markets page](screenshots/markets.png)
+
+**In Chinese,** with English and Japanese alongside. Translations are prepared ahead of time, never generated while a page renders.
+
+![Chinese home page](screenshots/home-zh.png)
+
+**On a phone,** with its own bottom bar and layouts rather than a squeezed desktop page.
+
+![Phone screens](screenshots/mobile.png)
 
 ## How it is built
 
