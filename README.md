@@ -1,6 +1,6 @@
 # AiSeek
 
-**See what changed, in every domain.** · [aiseek.dev](https://aiseek.dev) · [中文](README.zh-CN.md)
+**See what changed, in every domain.** · [aiseek.dev](https://aiseek.dev) · [中文](README.zh-CN.md) · [日本語](README.ja.md)
 
 AiSeek reads public sources across 24 domains — technology, economy, markets, policy, energy, geopolitics and more — and turns
 what changed into a structure you can check: who it touches, how they are connected, and the evidence behind every link.
@@ -98,9 +98,23 @@ files. On 6 October 2026 the live site held 740 signals, 13,337 entities, 5,654 
 
 ## How it was made
 
-Designed and built by one person, working with AI coding agents (Claude Code and Codex). The agents worked under a written rulebook —
+Started on Friday, 2 October 2026. Designed and built by one person, working with AI coding agents (Claude Code and Codex). The agents worked under a written rulebook —
 evidence before facts, no model calls on render paths, receipts for every paid call, forward-only migrations — and the rules that
 matter most are enforced by tests rather than by trust.
+
+## Contact and sponsorship
+
+AiSeek is self-funded. If you would like to sponsor it, invest, collaborate, or work with me, I would be glad to hear from you.
+
+| | |
+|---|---|
+| Email | [wyc610721@gmail.com](mailto:wyc610721@gmail.com) · [support@aiseek.dev](mailto:support@aiseek.dev) |
+| LinkedIn | [WU Yuanchao](https://www.linkedin.com/in/%E3%82%A8%E3%83%B3%E3%83%81%E3%83%A7%E3%82%A6-%E3%82%B4-6ab2a2413/) |
+| X | [@Ai__Seek](https://x.com/Ai__Seek) |
+| Telegram | [@aiseek_dev](https://t.me/aiseek_dev) |
+| Instagram | [@wwwwww_zzyc](https://www.instagram.com/wwwwww_zzyc/) |
+| WeChat | YOLOWY2 ([QR code](https://aiseek.dev/en/contact#wechat)) |
+| GitHub | [YOLOW92](https://github.com/YOLOW92) |
 
 ---
 

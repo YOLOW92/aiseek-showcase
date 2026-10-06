@@ -1,6 +1,6 @@
 # AiSeek
 
-**每个领域，都看清发生了什么变化。** · [aiseek.dev](https://aiseek.dev/zh) · [English](README.md)
+**每个领域，都看清发生了什么变化。** · [aiseek.dev](https://aiseek.dev/zh) · [English](README.md) · [日本語](README.ja.md)
 
 AiSeek 持续读取 24 个领域的公开来源，覆盖技术、经济、市场、政策、能源、地缘政治等，把“发生了什么变化”整理成可以核对的结构：
 影响到谁，彼此怎么关联，每一条关联背后的证据是什么。线上提供中文、英文、日文三种语言。
@@ -92,8 +92,22 @@ flowchart TD
 
 ## 开发方式
 
-由一个人设计和开发，使用 AI 编程代理（Claude Code 和 Codex）协作完成。代理遵守一份成文的工程规则：先有证据再有事实、渲染路径不调用模型、
+2026 年 10 月 2 日（周五）开工。由一个人设计和开发，使用 AI 编程代理（Claude Code 和 Codex）协作完成。代理遵守一份成文的工程规则：先有证据再有事实、渲染路径不调用模型、
 每次付费调用都有收据、迁移只进不退。最关键的几条规则由测试强制执行，而不是靠自觉。
+
+## 联系与赞助
+
+AiSeek 目前完全自费运营。如果你愿意赞助、投资、合作，或者想和我一起工作，非常欢迎联系我。
+
+| | |
+|---|---|
+| 邮箱 | [wyc610721@gmail.com](mailto:wyc610721@gmail.com) · [support@aiseek.dev](mailto:support@aiseek.dev) |
+| 微信 | YOLOWY2（[二维码](https://aiseek.dev/zh/contact#wechat)） |
+| LinkedIn | [WU Yuanchao](https://www.linkedin.com/in/%E3%82%A8%E3%83%B3%E3%83%81%E3%83%A7%E3%82%A6-%E3%82%B4-6ab2a2413/) |
+| X | [@Ai__Seek](https://x.com/Ai__Seek) |
+| Telegram | [@aiseek_dev](https://t.me/aiseek_dev) |
+| Instagram | [@wwwwww_zzyc](https://www.instagram.com/wwwwww_zzyc/) |
+| GitHub | [YOLOW92](https://github.com/YOLOW92) |
 
 ---
 
