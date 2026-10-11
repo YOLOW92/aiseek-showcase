@@ -2,6 +2,16 @@
 
 **See what changed, in every domain.** · [aiseek.dev](https://aiseek.dev) · [中文](README.zh-CN.md) · [日本語](README.ja.md)
 
+## Latest update · 12 October 2026
+
+SeekMap and meaningful trends, Chinese and Japanese search and evidence checks, relationship analysis, and faster reading: [read the P30–P67 update](CHANGELOG.md).
+
+[English](CHANGELOG.md) · [中文](CHANGELOG.zh-CN.md) · [日本語](CHANGELOG.ja.md)
+
+## Original showcase · 6 October 2026
+
+The introduction, screenshots, stack, figures and code excerpts below are preserved from the original edition. They describe that version; the dated changelog contains subsequent changes and current screenshots.
+
 AiSeek reads public sources across 24 domains — technology, economy, markets, policy, energy, geopolitics and more — and turns
 what changed into a structure you can check: who it touches, how they are connected, and the evidence behind every link.
 It is live in Chinese, English and Japanese.
