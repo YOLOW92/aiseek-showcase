@@ -1,132 +1,76 @@
+<div align="center">
+
 # AiSeek
 
-**See what changed, in every domain.** · [aiseek.dev](https://aiseek.dev) · [中文](README.zh-CN.md) · [日本語](README.ja.md)
+**From signals to understanding.**
 
-## Latest update · 12 October 2026
+An independently directed, AI-assisted product built for evidence-first change intelligence.
 
-SeekMap and meaningful trends, Chinese and Japanese search and evidence checks, relationship analysis, and faster reading: [read the P30–P67 update](CHANGELOG.md).
+[**Explore the live product ↗**](https://aiseek.dev/en) · [**Engineering case studies ↗**](docs/engineering/CASES.md) · [**Work / collaborate ↗**](docs/connect/README.md)
 
-[English](CHANGELOG.md) · [中文](CHANGELOG.zh-CN.md) · [日本語](CHANGELOG.ja.md)
+**English** · [简体中文](README.zh-CN.md) · [日本語](README.ja.md)
 
-## Original showcase · 6 October 2026
+</div>
 
-The introduction, screenshots, stack, figures and code excerpts below are preserved from the original edition. They describe that version; the dated changelog contains subsequent changes and current screenshots.
+![AiSeek — original concept artwork](assets/hero.svg)
 
-AiSeek reads public sources across 24 domains — technology, economy, markets, policy, energy, geopolitics and more — and turns
-what changed into a structure you can check: who it touches, how they are connected, and the evidence behind every link.
-It is live in Chinese, English and Japanese.
+> **Portfolio edition · P0–P72 · 2–12 October 2026 · Pre-game scope.** This is a public **showcase**, not the product's source repository. All artwork is original explanatory SVG; no live-site screenshots or fabricated dashboards.
 
-![Home page](screenshots/home-hero.png)
+## What I built
 
-> This repository is a showcase. The product source is private; the excerpts in [`excerpts/`](excerpts/) are taken from it unchanged.
+AiSeek organizes changes found in public information across **24 subject areas** — from technology and markets to policy and science — into an inspectable chain of **signals, evidence, entities and relationships**.
 
-## What it does
+It asks more than *“What's new?”*: **What changed, why might it matter, what is connected, and what does the evidence actually support?**
 
-- **Signals.** Each change is a signal with its sources, evidence count and a short "why it matters".
-- **Structure.** Entities and relations around a company, topic or signal, drawn as a map. Solid lines are facts, dashed lines are
-  supported inferences, dotted lines are hypotheses, and the three are never mixed.
-- **Evidence first.** Every relation points to a claim, and every fact points to the passage it came from.
-- **Research.** Signed-in users can run a multi-step research workflow on a signal or company and watch it stream in.
-- **Brief, Ahead, Markets.** A daily brief, a calendar of official statistics releases, and FX and macro data.
+| Discover | Investigate | Follow & integrate |
+|:--|:--|:--|
+| Signals, daily brief, deep reads, multilingual search | Source passages, claim grades, company structures, SeekMap, guided research | Following, notifications, calendars, read-only API and MCP |
 
-## A look around
+**Live in Chinese · English · Japanese.** The product's exact current features may differ from this dated case study. [Product walkthrough →](docs/product/README.md)
 
-**Structure of a company.** Who supplies it, who it serves, who it competes and partners with, who owns it and what constrains it.
+## Two paths through this portfolio
 
-![Company structure map](screenshots/company.png)
+| **For hiring managers & engineering leads** | **For potential partners & investors** |
+|:--|:--|
+| Understand my product decisions, AI-agent collaboration, engineering constraints, operations and real trade-offs. | Understand the user problem, product thesis, differentiation, commercial paths, traction caveats and open questions. |
+| [**Creator's role & timeline →**](docs/journey/README.md) | [**Opportunity & business model →**](docs/business/README.md) |
+| [**Engineering architecture →**](docs/engineering/README.md) | [**Proof & limitations →**](docs/proof/README.md) |
 
-**The home feed.** Lead changes, a live wire of everything new, and the day's threads across domains.
+## Engineering choices worth examining
 
-![Home feed](screenshots/home-feed.png)
+![Simplified P72 architecture illustration](assets/architecture.svg)
 
-**A signal.** What happened, why it matters, and every source behind it.
+1. **Evidence cannot be promoted by a model's confidence.** Facts, supported inferences and hypotheses have explicit, source-based conditions. [Case study](docs/engineering/CASES.md#01--deciding-what-may-be-called-a-fact) · [real code](proof/code/promote.ts).
+2. **Relationships cannot be invented as arbitrary labels.** A typed, controlled vocabulary establishes what may connect and how its provenance is retained. [Case study](docs/engineering/CASES.md#02--making-a-relationship-graph-explainable) · [real code](proof/code/relation-registry.ts).
+3. **Chinese and Japanese are first-class search problems**, requiring indexing, identity normalization and multilingual support checks — not just translated copy. [Case study](docs/engineering/CASES.md#03--finding-one-entity-across-languages).
+4. **A spike in publisher activity is not automatically a real-world trend.** Source-change flags and complete-day baselines matter. [Case study](docs/engineering/CASES.md#04--distinguishing-news-volume-from-an-actual-change).
+5. **Resource limits are design constraints.** Async jobs, model budgets, bounded compute, production recovery and page-performance measures are part of the product. [Case study](docs/engineering/CASES.md#05--shipping-on-constrained-infrastructure) · [real code](proof/code/gate.py).
 
-![Signal page](screenshots/signal.png)
+## The person behind the work
 
-**Markets.** FX with 30-day and three-month views, daily movers and a full cross-rate table.
+**WU Yuanchao · [YOLOW92](https://github.com/YOLOW92)**
 
-![Markets page](screenshots/markets.png)
+I initiated, directed and operated AiSeek as an independent, self-funded project, using **Claude Code and Codex as substantial coding collaborators**. My contribution centers on product direction, task decomposition, constraints, review, integration, troubleshooting and delivery. **This is not a claim that I personally hand-coded the entire private codebase.**
 
-**In Chinese,** with English and Japanese alongside. Translations are prepared ahead of time, never generated while a page renders.
+[Read the project journey →](docs/journey/README.md)
 
-![Chinese home page](screenshots/home-zh.png)
+## What is verifiable — and what is still unproven
 
-**On a phone,** with its own bottom bar and layouts rather than a squeezed desktop page.
+| Demonstrated in the P72 portfolio | Not claimed here |
+|:--|:--|
+| Public multilingual product, source-linked reading, graph and map workflows | Independently audited factual accuracy |
+| Original public source excerpts for key design rules | Full open source or reproducible standalone deployment |
+| Dated development records and operational trade-offs | Verified active-user growth, revenue or profitability |
+| Subscription and developer interface foundations | Proven product-market fit or a completed funding round |
 
-![Phone screens](screenshots/mobile.png)
+**Historical context, not audience traction:** the original 6 October showcase recorded 740 signals, 13,337 entities, 5,654 relations and 64,473 evidence items. These are dated, self-reported *content inventory* figures, **not** current P72 figures, customers or revenue. [Exact status and evidence levels →](docs/proof/README.md)
 
-## How it is built
+### Talk to me
 
-```mermaid
-flowchart TD
-  S[Public sources<br/>feeds · filings · official APIs] --> C[Collection<br/>pg-boss jobs]
-  C --> D[Document worker<br/>extraction · entities · topics]
-  D --> E[Evidence engine<br/>claims · deterministic classing]
-  E --> G[Relations<br/>controlled registry]
-  G --> P[Publication layer]
-  P --> A[Fastify API] --> W[React Router SSR<br/>zh · en · ja]
-  A --> R[Research workflow<br/>LangGraph.js · SSE]
-  M[Model router<br/>receipts · budgets · fallbacks] -.-> D & E & R
-```
+I welcome conversations about **technical product and engineering roles**, AI-native building, research or data partnerships, product pilots, sponsorship and investment exploration.
 
-**One database.** PostgreSQL 17 is the canonical store and also carries the vectors (pgvector), the graph projection
-(Apache AGE, rebuildable from the relational tables), the job queue (pg-boss) and the research workflow checkpoints. There is no
-Redis, Kafka or separate vector database.
-
-**Facts are decided by rules, not by a model.** A claim becomes FACT only when a qualifying source states it directly with an exact
-locator and nothing outweighs it; SUPPORTED needs two independent evidence groups and a written rationale; everything else stays a
-HYPOTHESIS. Model confidence is never an input. See [`excerpts/promote.ts`](excerpts/promote.ts).
-
-**A closed vocabulary of relations.** 47 relation types, each with allowed entity types, inverse, decay and temporal rules. A model
-can propose a relation but cannot invent a new kind. See [`excerpts/relation-registry.ts`](excerpts/relation-registry.ts).
-
-**Every model call is accounted for.** All LLM and embedding calls go through one router that checks the budget before dispatch,
-writes a receipt, opens a circuit breaker on failing providers and falls back along a configured route. No page render ever waits
-on a model.
-
-**Small machines, bounded queues.** Embeddings fall back to a self-hosted bge-m3 on a two-core server. Its admission gate keeps the
-wait bounded and answers "busy" instead of computing answers nobody will read. See [`excerpts/gate.py`](excerpts/gate.py).
-
-**Layering is tested.** `contracts → database → engines → research / watch / publication → apps`. An architecture test fails the
-build if a package imports across layers, if the web app imports the database, queue or model router, or if anything but the
-router talks to a model vendor.
-
-## Stack
-
-| Layer | |
-|---|---|
-| Web | React 19, React Router 8 (SSR), Tailwind CSS 4, Motion, Vite 7 · per-request CSP nonce, hreflang, JSON-LD |
-| API and jobs | Node 24, TypeScript 5.9, Fastify 5, zod 4, pg-boss, LangGraph.js, Better Auth (2FA), Polar billing |
-| Documents | Python 3.12, FastAPI, Crawl4AI, Docling, trafilatura, GLiNER, jieba3 / Janome, MiniCheck, Splink, BERTopic, EdgarTools |
-| Data | PostgreSQL 17, pgvector, Apache AGE, row-level security for private research |
-| Operations | Docker Compose on a VPS, Caddy, self-hosted CI, nightly backups with a monthly restore test, forward-only checksummed migrations |
-
-## By the numbers
-
-About 90,000 lines of TypeScript, 2,700 of Python and 50 SQL migrations, in 4 apps, 25 packages and 2 services, with 161 test
-files. On 6 October 2026 the live site held 740 signals, 13,337 entities, 5,654 relations and 64,473 pieces of evidence.
-
-## How it was made
-
-Started on Friday, 2 October 2026. Designed and built by one person, working with AI coding agents (Claude Code and Codex). The agents worked under a written rulebook —
-evidence before facts, no model calls on render paths, receipts for every paid call, forward-only migrations — and the rules that
-matter most are enforced by tests rather than by trust.
-
-## Contact and sponsorship
-
-AiSeek is self-funded. If you would like to sponsor it, invest, collaborate, or work with me, I would be glad to hear from you.
-
-| | |
-|---|---|
-| Email | [wyc610721@gmail.com](mailto:wyc610721@gmail.com) · [support@aiseek.dev](mailto:support@aiseek.dev) |
-| LinkedIn | [WU Yuanchao](https://www.linkedin.com/in/%E3%82%A8%E3%83%B3%E3%83%81%E3%83%A7%E3%82%A6-%E3%82%B4-6ab2a2413/) |
-| X | [@Ai__Seek](https://x.com/Ai__Seek) |
-| Telegram | [@aiseek_dev](https://t.me/aiseek_dev) |
-| Instagram | [@wwwwww_zzyc](https://www.instagram.com/wwwwww_zzyc/) |
-| WeChat | YOLOWY2 ([QR code](https://aiseek.dev/en/contact#wechat)) |
-| GitHub | [YOLOW92](https://github.com/YOLOW92) |
+**[Contact WU Yuanchao →](docs/connect/README.md)** · [LinkedIn](https://www.linkedin.com/in/%E3%82%A8%E3%83%B3%E3%83%81%E3%83%A7%E3%82%A6-%E3%82%B4-6ab2a2413/) · [support@aiseek.dev](mailto:support@aiseek.dev)
 
 ---
 
-Screenshots and excerpts © 2026 YOLOW92. All rights reserved. Third-party components keep their own licences; the product credits
-them at [aiseek.dev/en/credits](https://aiseek.dev/en/credits).
+<sub>**Scope & rights.** This edition intentionally excludes all game development and AiSeek 2.0. The original production repository is private. The three published code excerpts are retained from the previous showcase unchanged; other text and original illustrations © 2026 YOLOW92, all rights reserved. Product third-party acknowledgements: [Credits](https://aiseek.dev/en/credits). This portfolio is informational, not a financial offer or investment advice.</sub>

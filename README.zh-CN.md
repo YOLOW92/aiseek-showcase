@@ -1,125 +1,76 @@
+<div align="center">
+
 # AiSeek
 
-**每个领域，都看清发生了什么变化。** · [aiseek.dev](https://aiseek.dev/zh) · [English](README.md) · [日本語](README.ja.md)
+**从变化信号，到结构化理解。**
 
-## 最新更新 · 2026 年 10 月 12 日
+一个由个人主导、借助 AI 编程代理开发的证据优先型变化情报平台。
 
-SeekMap 与更可信的趋势、中日文搜索与证据核验、关系网络分析，以及更顺畅的阅读：[阅读 P30–P67 更新日志](CHANGELOG.zh-CN.md)。
+[**体验线上产品 ↗**](https://aiseek.dev/zh) · [**阅读工程案例 ↗**](docs/engineering/CASES.zh-CN.md) · [**求职与合作 ↗**](docs/connect/README.zh-CN.md)
 
-[中文](CHANGELOG.zh-CN.md) · [English](CHANGELOG.md) · [日本語](CHANGELOG.ja.md)
+[English](README.md) · **简体中文** · [日本語](README.ja.md)
 
-## 原始展示 · 2026 年 10 月 6 日
+</div>
 
-下方介绍、截图、技术栈、规模数据与代码节选保留为最初版本的记录，不代表当前状态。之后的改进与最新截图见带日期的更新日志。
+![AiSeek 原创概念横幅](assets/hero.svg)
 
-AiSeek 持续读取 24 个领域的公开来源，覆盖技术、经济、市场、政策、能源、地缘政治等，把“发生了什么变化”整理成可以核对的结构：
-影响到谁，彼此怎么关联，每一条关联背后的证据是什么。线上提供中文、英文、日文三种语言。
+> **作品集版本 · P0–P72 · 2026 年 10 月 2–12 日 · 游戏开发前。** 这是公开**展示仓库**，不是产品完整源码。所有图片均为原创 SVG 示意图，没有真实网页截图或伪造仪表盘。
 
-![中文首页](screenshots/home-zh.png)
+## 我做了一个什么产品？
 
-> 本仓库只用于展示。产品源码不公开，[`excerpts/`](excerpts/) 中的代码原样摘自产品仓库。
+AiSeek 持续读取覆盖**24 个领域**的公开信息，涉及科技、市场、政策、科学等，将新闻中的变化整理为可以检查的**信号、证据、实体和关系**。
 
-## 产品能做什么
+它不只回答“发生了什么”，还希望回答：**到底改变了什么？为什么重要？影响谁？结论有没有可靠出处？**
 
-- **信号**：每一条变化都是一个信号，附带来源、证据数量和一句“为什么重要”。
-- **结构**：围绕公司、主题或信号，把实体和关系画成结构图。实线是事实，虚线是有依据的推断，点线是假设，三者从不混用。
-- **证据优先**：每条关系都指向一个论断，每个事实都能追溯到原文段落。
-- **研究**：登录用户可以针对一个信号或一家公司发起多步研究，过程实时流式展示。
-- **简报、日程、市场**：每日简报、官方统计数据发布日程、外汇和宏观数据。
+| 发现 | 深入研究 | 持续追踪与集成 |
+|:--|:--|:--|
+| 信号、每日简报、深度报道、三语搜索 | 原文出处、证据分级、企业结构、SeekMap、研究流程 | 关注与通知、日历、只读 API、MCP |
 
-## 看看界面
+**中文、英文、日文三语言上线。** 目前主站可能已继续迭代，不能把实时状态与本作品集的历史范围混为一谈。[了解产品 →](docs/product/README.zh-CN.md)
 
-**公司结构。** 谁是它的供应方、它服务谁、和谁竞争或合作、谁持有它、受什么约束。
+## 两种阅读路线
 
-![公司结构图](screenshots/company.png)
+| **招聘方／技术负责人** | **合作伙伴／潜在投资方** |
+|:--|:--|
+| 了解我的产品决策、AI 代理协作、工程约束、运营经验及实际问题解决能力。 | 了解用户问题、产品差异、商业探索、真实成果和仍需验证的问题。 |
+| [**本人角色与历程 →**](docs/journey/README.zh-CN.md) | [**商业机会与模式 →**](docs/business/README.zh-CN.md) |
+| [**架构与技术设计 →**](docs/engineering/README.zh-CN.md) | [**证据、指标与局限 →**](docs/proof/README.zh-CN.md) |
 
-**首页信息流。** 头条变化、实时快讯，以及当天各领域的主线。
+## 五项真正值得讨论的工程能力
 
-![首页信息流](screenshots/home-feed.png)
+![P72 阶段原创架构说明图](assets/architecture.svg)
 
-**信号详情。** 发生了什么、为什么重要、背后的每一个来源。
+1. **不让 AI 自己宣布“事实成立”。** FACT、SUPPORTED、HYPOTHESIS 都必须经过明确的证据规则。[工程案例](docs/engineering/CASES.zh-CN.md) · [真实源代码](proof/code/promote.ts)。
+2. **不允许模型随意发明关系。** 受控注册表限定关联类型、对象类别、时间与证据约束。[工程案例](docs/engineering/CASES.zh-CN.md) · [真实源代码](proof/code/relation-registry.ts)。
+3. **多语言不仅是翻译。** 中文、日文需要独立检索方案、实体归一化和跨语言引用检查。[工程案例](docs/engineering/CASES.zh-CN.md)。
+4. **发布量暴增不等于世界发生异常。** 通过完整日期基线、信源变化判断降低误报。[工程案例](docs/engineering/CASES.zh-CN.md)。
+5. **有限资源下保障持续运行。** 队列、模型调用预算、降级、恢复机制与页面速度同时考虑。[工程案例](docs/engineering/CASES.zh-CN.md) · [真实源代码](proof/code/gate.py)。
 
-![信号详情](screenshots/signal.png)
+## 项目背后的人
 
-**市场。** 外汇的 30 天和三个月走势、当日涨跌排行、完整的交叉汇率表。
+**WU Yuanchao · [YOLOW92](https://github.com/YOLOW92)**
 
-![市场](screenshots/markets.png)
+我以独立开发者身份启动、主导并自费运营 AiSeek，使用 **Claude Code 和 Codex 作为重要的代码实现协作者**。我的角色包括确定产品方向、拆分任务、制定技术约束、验收、集成、排障与持续交付。**不声称全部私有代码均由我个人逐行手写。**
 
-**英文界面。** 同时提供中文、英文、日文。翻译都是提前准备好的，页面渲染时从不临时生成。
+[阅读从想法到上线的历程 →](docs/journey/README.zh-CN.md)
 
-![英文首页](screenshots/home-hero.png)
+## 哪些已经实现？哪些尚未证实？
 
-**手机端。** 有自己的底部导航和布局，而不是把桌面页面硬塞进小屏。
+| 能展示的 P72 阶段成果 | 不做的夸大宣传 |
+|:--|:--|
+| 实际上线的三语产品、来源核验、关系网络和地图 | 未经独立审计的全站事实准确率 |
+| 三份未经改写的真实源代码节选 | 声称完整开源或任何人都能直接部署 |
+| 带日期的迭代记录和真实工程取舍 | 虚构活跃用户、增长、营收与利润 |
+| 订阅和开发者接口的工程基础 | 宣称已验证 PMF 或已完成融资 |
 
-![手机端](screenshots/mobile.png)
+**历史内容规模不等于商业增长：** 10 月 6 日旧展示记录过 740 个信号、13,337 个实体、5,654 条关系、64,473 条证据。这些只是**当日自述的内容库存快照**，不是 P72 的最新数量、更不是客户或收入。[指标口径与核验证据 →](docs/proof/README.zh-CN.md)
 
-## 技术设计
+### 欢迎与我联系
 
-```mermaid
-flowchart TD
-  S[公开来源<br/>订阅源 · 公告 · 官方接口] --> C[采集<br/>pg-boss 任务]
-  C --> D[文档服务<br/>抽取 · 实体 · 主题]
-  D --> E[证据引擎<br/>论断 · 规则定级]
-  E --> G[关系<br/>受控注册表]
-  G --> P[发布层]
-  P --> A[Fastify API] --> W[React Router SSR<br/>中 · 英 · 日]
-  A --> R[研究流程<br/>LangGraph.js · SSE]
-  M[模型路由<br/>收据 · 预算 · 降级] -.-> D & E & R
-```
+目前希望寻找**技术产品和工程相关职业机会**，以及 AI 原生开发、研究与数据技术合作、产品试点、赞助和投资交流。
 
-**一个数据库。** PostgreSQL 17 是唯一的权威存储，同时承载向量（pgvector）、图投影（Apache AGE，可由关系表重建）、
-任务队列（pg-boss）和研究流程的检查点。没有 Redis、Kafka，也没有单独的向量数据库。
-
-**事实由规则判定，不由模型判定。** 只有当合格来源直接陈述、带精确定位、且没有更强的反证时，论断才是 FACT；SUPPORTED 需要两组独立证据
-加书面推理依据；其余一律是 HYPOTHESIS。模型给出的置信度从不参与判定。见 [`excerpts/promote.ts`](excerpts/promote.ts)。
-
-**关系词表是封闭的。** 共 47 种关系类型，每种都规定了允许的实体类型、反向关系、衰减期和时间范围要求。模型可以提议关系，但不能发明新的关系种类。
-见 [`excerpts/relation-registry.ts`](excerpts/relation-registry.ts)。
-
-**每一次模型调用都记账。** 所有大模型和向量调用都经过同一个路由：发送前检查预算，发送后写收据，故障的服务商会被熔断，并按配置的路线降级。
-页面渲染从不等待模型。
-
-**小机器，有界队列。** 向量服务的后备是一台两核服务器上自建的 bge-m3。准入闸门限制排队长度和等待时间，忙时直接回复“忙”，
-而不是去计算一个已经没人等的结果。见 [`excerpts/gate.py`](excerpts/gate.py)。
-
-**分层由测试保证。** `contracts → database → engines → research / watch / publication → apps`。如果某个包跨层引用，
-或者前端引用了数据库、队列、模型路由，或者路由之外的代码直接访问模型服务商，构建就会失败。
-
-## 技术栈
-
-| 层 | |
-|---|---|
-| 前端 | React 19、React Router 8（SSR）、Tailwind CSS 4、Motion、Vite 7 · 每请求 CSP nonce、hreflang、JSON-LD |
-| API 与任务 | Node 24、TypeScript 5.9、Fastify 5、zod 4、pg-boss、LangGraph.js、Better Auth（双重验证）、Polar 计费 |
-| 文档处理 | Python 3.12、FastAPI、Crawl4AI、Docling、trafilatura、GLiNER、jieba3 / Janome、MiniCheck、Splink、BERTopic、EdgarTools |
-| 数据 | PostgreSQL 17、pgvector、Apache AGE，私有研究使用行级安全 |
-| 运维 | VPS 上的 Docker Compose、Caddy、自建 CI、每晚备份加每月恢复演练、只进不退且带校验和的数据库迁移 |
-
-## 规模
-
-约 9 万行 TypeScript、2,700 行 Python、50 个 SQL 迁移，分为 4 个应用、25 个包、2 个服务，共 161 个测试文件。
-2026 年 10 月 6 日，线上共有 740 个信号、13,337 个实体、5,654 条关系、64,473 条证据。
-
-## 开发方式
-
-2026 年 10 月 2 日（周五）开工。由一个人设计和开发，使用 AI 编程代理（Claude Code 和 Codex）协作完成。代理遵守一份成文的工程规则：先有证据再有事实、渲染路径不调用模型、
-每次付费调用都有收据、迁移只进不退。最关键的几条规则由测试强制执行，而不是靠自觉。
-
-## 联系与赞助
-
-AiSeek 目前完全自费运营。如果你愿意赞助、投资、合作，或者想和我一起工作，非常欢迎联系我。
-
-| | |
-|---|---|
-| 邮箱 | [wyc610721@gmail.com](mailto:wyc610721@gmail.com) · [support@aiseek.dev](mailto:support@aiseek.dev) |
-| 微信 | YOLOWY2（[二维码](https://aiseek.dev/zh/contact#wechat)） |
-| LinkedIn | [WU Yuanchao](https://www.linkedin.com/in/%E3%82%A8%E3%83%B3%E3%83%81%E3%83%A7%E3%82%A6-%E3%82%B4-6ab2a2413/) |
-| X | [@Ai__Seek](https://x.com/Ai__Seek) |
-| Telegram | [@aiseek_dev](https://t.me/aiseek_dev) |
-| Instagram | [@wwwwww_zzyc](https://www.instagram.com/wwwwww_zzyc/) |
-| GitHub | [YOLOW92](https://github.com/YOLOW92) |
+**[联系 WU Yuanchao →](docs/connect/README.zh-CN.md)** · [LinkedIn](https://www.linkedin.com/in/%E3%82%A8%E3%83%B3%E3%83%81%E3%83%A7%E3%82%A6-%E3%82%B4-6ab2a2413/) · [support@aiseek.dev](mailto:support@aiseek.dev)
 
 ---
 
-截图和代码节选 © 2026 YOLOW92，保留所有权利。第三方组件遵循各自的许可证，产品在
-[aiseek.dev/zh/credits](https://aiseek.dev/zh/credits) 中列明。
+<sub>**展示边界与版权：** 仅展示游戏开发前 P0–P72，不包含任何游戏开发或 AiSeek 2.0。主项目源码私有，三份公开代码节选按旧版原样保留。其他原创文字与插画 © 2026 YOLOW92，保留所有权利。第三方依赖及素材见[产品致谢页](https://aiseek.dev/zh/credits)。本作品集不构成投资要约或投资建议。</sub>
