@@ -1,0 +1,28 @@
+{
+  "sourceRevision": "a05796c65f9119d4924bbaa26b5291492e47f3ed",
+  "reviewDate": "2026-10-15",
+  "scope": "Selected generic excerpts only / 仅通用片段 / 汎用的な抜粋のみ",
+  "excerpts": [
+    {
+      "file": "proof/code/server-entitlements.ts",
+      "sourcePath": "packages/billing/src/entitlements.ts",
+      "sourceBlob": "ded5613eb34c69d01c9444ff0b07b844eb0c0bb5",
+      "startLine": 29,
+      "endLine": 33
+    },
+    {
+      "file": "proof/code/run-budget.ts",
+      "sourcePath": "packages/model-router/src/budgets.ts",
+      "sourceBlob": "1c52f332b1508a00b6aae3616db1702fadcf3e0f",
+      "startLine": 40,
+      "endLine": 47
+    },
+    {
+      "file": "proof/code/frontend-boundary.test.ts",
+      "sourcePath": "tests/architecture/architecture.test.ts",
+      "sourceBlob": "c4da238214de8df0ef1a86803015c6747f7f25ad",
+      "startLine": 108,
+      "endLine": 115
+    }
+  ]
+}
