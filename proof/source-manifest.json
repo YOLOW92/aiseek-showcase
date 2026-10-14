@@ -1,28 +1,48 @@
 {
-  "sourceRevision": "a05796c65f9119d4924bbaa26b5291492e47f3ed",
+  "sourceRevision": "400c526728efb1b8bd7d7a7b914caa65f06ff217",
   "reviewDate": "2026-10-15",
-  "scope": "Selected generic excerpts only / 仅通用片段 / 汎用的な抜粋のみ",
   "excerpts": [
     {
-      "file": "proof/code/server-entitlements.ts",
-      "sourcePath": "packages/billing/src/entitlements.ts",
-      "sourceBlob": "ded5613eb34c69d01c9444ff0b07b844eb0c0bb5",
-      "startLine": 29,
-      "endLine": 33
+      "file": "proof/code-excerpts/evidence-locator.test.ts",
+      "sourcePath": "packages/evidence-engine/src/promote.test.ts",
+      "sourceBlob": "a3b5043033b20d88c6abfeb37163b8fae92a848a",
+      "startLine": 21,
+      "endLine": 23
     },
     {
-      "file": "proof/code/run-budget.ts",
-      "sourcePath": "packages/model-router/src/budgets.ts",
-      "sourceBlob": "1c52f332b1508a00b6aae3616db1702fadcf3e0f",
-      "startLine": 40,
-      "endLine": 47
+      "file": "proof/code-excerpts/history-length.test.ts",
+      "sourcePath": "packages/intelligence-engine/src/change-heat.test.ts",
+      "sourceBlob": "3d28ddfa62444fb0d7bcedc12aca60655414bb54",
+      "startLine": 26,
+      "endLine": 30
     },
     {
-      "file": "proof/code/frontend-boundary.test.ts",
+      "file": "proof/code-excerpts/script-identity.test.ts",
+      "sourcePath": "packages/entity-engine/src/name-key.test.ts",
+      "sourceBlob": "0bdbfc5b523f5072f8f02f1239db27a82870f808",
+      "startLine": 6,
+      "endLine": 11
+    },
+    {
+      "file": "proof/code-excerpts/model-identity.test.ts",
+      "sourcePath": "packages/entity-engine/src/name-key.test.ts",
+      "sourceBlob": "0bdbfc5b523f5072f8f02f1239db27a82870f808",
+      "startLine": 27,
+      "endLine": 34
+    },
+    {
+      "file": "proof/code-excerpts/async-boundary.test.ts",
       "sourcePath": "tests/architecture/architecture.test.ts",
       "sourceBlob": "c4da238214de8df0ef1a86803015c6747f7f25ad",
-      "startLine": 108,
-      "endLine": 115
+      "startLine": 131,
+      "endLine": 136
+    },
+    {
+      "file": "proof/code-excerpts/release-command.test.sh",
+      "sourcePath": "tests/deploy/server-ci.sh",
+      "sourceBlob": "f5a68699a45d1a8001382c147e994e23a0efe4e8",
+      "startLine": 6,
+      "endLine": 10
     }
   ]
 }

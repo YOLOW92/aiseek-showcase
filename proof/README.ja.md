@@ -1,29 +1,28 @@
-# 根拠と、その限界
+# Evidence / 挙動と根拠を確認する
 
-[ポートフォリオ](../README.ja.md) · [English](README.md) · [中文](README.zh-CN.md)
+[ポートフォリオ](../README.ja.md) · [English](README.md) · [简体中文](README.zh-CN.md) · [日本語](README.ja.md)
 
-確認日 **2026-10-15**。非公開ソースの版：`a05796c65f9119d4924bbaa26b5291492e47f3ed`。
+## 選定したソースのテスト
 
-## 確認できる材料
+| 抜粋 | 期待する挙動 |
+|---|---|
+| [evidence-locator.test.ts](code-excerpts/evidence-locator.test.ts) | 原文の位置がなければ HYPOTHESIS のまま |
+| [history-length.test.ts](code-excerpts/history-length.test.ts) | 履歴の長さは実際の日数を反映 |
+| [script-identity.test.ts](code-excerpts/script-identity.test.ts) | 表記差で共通の対象を保つ |
+| [model-identity.test.ts](code-excerpts/model-identity.test.ts) | 異なる型番を区別 |
+| [async-boundary.test.ts](code-excerpts/async-boundary.test.ts) | API ソースで調査を同期実行しない |
+| [release-command.test.sh](code-excerpts/release-command.test.sh) | 不正な公開命令を拒否 |
 
-| 説明 | 公開の根拠 | 示せる範囲 |
-|---|---|---|
-| AiSeek は多言語の情報製品 | [日本語](https://aiseek.dev/ja)、[English](https://aiseek.dev/en)、[中文](https://aiseek.dev/zh)、[更新履歴](https://aiseek.dev/ja/changelog) | 公開の読書体験と記録された提供内容。 |
-| 根拠と訂正を製品に組み込んでいる | [方法説明](https://aiseek.dev/ja/method)、[訂正記録](https://aiseek.dev/ja/corrections) | 公開の方法と訂正の仕組み。精度の点数ではありません。 |
-| バックエンドでアカウントの制限を確認する | [深さの検査](code/server-entitlements.ts) | 一つの関数。依存先と呼び出し経路は抜粋外です。 |
-| 処理予算の検査がある | [予算の検査](code/run-budget.ts) | 一つの関数。測定済みの費用削減ではありません。 |
-| フロントエンドの依存境界を検査する | [設計のテスト](code/frontend-boundary.test.ts) | 一つのテスト抜粋。新たな実行結果や完全な安全性は主張しません。 |
-| 読み取り専用の連携を提供する | [開発者ガイド](https://aiseek.dev/ja/developers) | 公開の API/MCP。現在の条件は製品に従います。 |
-| SeekEarth と SeekTrace は将来の方向 | ポートフォリオの計画欄 | 確認した非公開の計画では実装は予定扱いです。提供済みという主張はありません。 |
+## ソースの記録
 
-## コードの選定
+2026 年 10 月 15 日に確認。
 
-三つのファイルは権限、資源、依存検査の**原文どおりの部分抜粋**で、合計 21 行です。インポートや周囲の文脈を含まないため、**単独で実行できるプログラムやテスト群ではありません**。[一覧](source-manifest.json)に元のパス、ファイル識別子、行範囲を記録しています。アプリケーションのリポジトリは非公開のままで、この紹介を読むためにアクセスする必要はありません。
+`400c526728efb1b8bd7d7a7b914caa65f06ff217`
 
-具体的な情報源の一覧、運用データ、核心のアルゴリズム、将来の詳細設計は含めていません。抜粋は技術判断の説明を支え、アプリケーションの再現を目的としません。
+[元ファイルと正確な抜粋範囲](source-manifest.json)
 
-## 主張していないこと
+## 公開製品の根拠
 
-訪問者数、顧客数、売上、稼働率、遅延、精度の数値は掲載していません。計画は計画と明記しています。生成アートはテーマの表現であり、画面、測定、内部構造ではありません。更新履歴は製品の提供記録であり、今回の新しいエンドツーエンドテストの結果ではありません。
+[方法説明](https://aiseek.dev/ja/method) · [訂正記録](https://aiseek.dev/ja/corrections) · [更新履歴](https://aiseek.dev/ja/changelog) · [開発者ガイド](https://aiseek.dev/ja/developers)
 
-製品は変化します。現在の可用性は[サイト](https://aiseek.dev/ja)、[稼働状況](https://status.aiseek.dev)、[更新履歴](https://aiseek.dev/ja/changelog)でご確認ください。[帰属と利用](../THIRD_PARTY_NOTICES.md)。
+[提供状況と測定](status.ja.md)

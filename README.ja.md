@@ -1,69 +1,48 @@
-# WU Yuanchao
-### 個人開発者 · プロダクトの企画から運用まで
+### AISEEK · INDEPENDENT PRODUCT CASE STUDY
+
+# From Signals to Understanding.
+
+変化を見つけ、意味を理解し、根拠をたどるための多言語情報プラットフォーム。
+
+**WU Yuanchao** が立ち上げ、開発を主導し、運用しています。
 
 [English](README.md) · [简体中文](README.zh-CN.md) · [日本語](README.ja.md)
 
-**アイデアを動くシステムにし、そのシステムが公開する内容にも責任を持つ。**
+[製品を使う](https://aiseek.dev/ja) · [LinkedIn](https://www.linkedin.com/in/yolow92/) · [お問い合わせ](connect/README.ja.md)
 
-[AiSeek を使う](https://aiseek.dev/ja) · [LinkedIn](https://www.linkedin.com/in/yolow92/) · [GitHub](https://github.com/YOLOW92) · [お問い合わせ](https://aiseek.dev/ja/contact)
+**稼働中の製品 · 三言語 · 読み取り専用 API・MCP**
 
-![コンセプトアート：散在する情報が構造へとまとまる様子。AiSeek のペーパーホワイト、ネイビー、コバルトブルーを使用](assets/information-to-structure.jpg)
-*本ポートフォリオ用に生成したコンセプトアートです。製品の画面や実装構造を示すものではありません。*
+## 情報から理解へ
 
-## 代表作 / AiSeek
+見出しは出来事を伝えます。AiSeek はその変化を背景、根拠の該当箇所、関係する対象、次の観察につなぎます。この事例は製品と、それを実運用に導いた判断を紹介します。
 
-**「何が変わったか、なぜ重要か、根拠はどこにあるか」を理解するための多言語情報プラットフォーム。**
+![AiSeek のモジュール構成](assets/diagrams/framework.jpg)
 
-重要な変化、その背景、出典を一つの読書体験にまとめています。関係を調べ、対象をフォローし、通知やブリーフで継続して追うことができます。メインサイトは日本語・英語・中国語に対応しています。
+[構成と実行を見る](engineering/architecture.ja.md)
 
-私が立ち上げ、プロダクトの方向性、要件、技術上の制約、受け入れ判断、運用を担当しています。このポートフォリオでは情報プラットフォーム本体を紹介します。
+## 目的に合わせて読む
 
-## この作品で示す三つの能力
+**採用担当・技術責任者**：私の役割から、五つの技術事例と実装の根拠へ。
 
-| 能力 | 私の判断 | 確認できる材料 |
-|---|---|---|
-| **プロダクト判断** | 記事数よりも変化とその意味を優先し、読者が根拠をたどれるようにする。 | [製品事例](docs/CASES.ja.md#01--情報を役立つものにする)、[方法説明](https://aiseek.dev/ja/method)、[更新履歴](https://aiseek.dev/ja/changelog) |
-| **システムの境界** | 公開閲覧、非公開の作業、外部呼び出しを、明確な契約とサーバー側の検査で制御する。 | [技術事例](docs/CASES.ja.md#02--境界を検査できる形にする)、[コード抜粋](proof/README.ja.md) |
-| **継続的な提供** | 多言語の読書、訂正、発見、運用までを製品の一部として扱う。 | [提供事例](docs/CASES.ja.md#03--公開後も責任を持つ)、[サイト](https://aiseek.dev/ja)、[稼働状況](https://status.aiseek.dev) |
+[私の役割](founder/journey.ja.md) → [技術事例](engineering/README.ja.md) → [実装の根拠](proof/README.ja.md)
 
-## システムの全体像
+**投資家・協業先**：ユーザーの課題、製品の違い、収益の道筋から、協業の可能性へ。
 
-![AiSeek の構成と依存の方向](assets/framework.jpg)
+[製品](product/overview.ja.md) → [事業概要](business/opportunity.ja.md) → [協業](business/partnership.ja.md)
 
-[構成・実行・技術](docs/ARCHITECTURE.ja.md)：公開閲覧、バックグラウンド処理、保存状態の関係。
+## プロジェクト資料
 
-## 実際に使う
-
-[AiSeek](https://aiseek.dev/ja) で変化を一つ選び、引用された資料を確認してください。関係を調べ、対象をフォローし、ブリーフを読むこともできます。外部ツールとの連携は[開発者ガイド](https://aiseek.dev/ja/developers)をご覧ください。
-
-| 読者の目的 | 提供済みの機能 |
+| セクション | 内容 |
 |---|---|
-| 変化を理解する | 変化、背景をまとめた記事、原文の該当箇所 |
-| 関係と場所を見る | 構造ビューと既存の SeekMap |
-| 継続して追う | フォロー、通知、ブリーフ、発表カレンダー |
-| 別のツールから読む | アカウントの利用枠に従う読み取り専用 API と MCP |
+| [01 · Product](product/overview.ja.md) | 製品の目的と体験 |
+| [02 · Founder](founder/journey.ja.md) | 私の役割、判断、製品の歩み |
+| [03 · Engineering](engineering/README.ja.md) | 五つの事例、構成、技術判断 |
+| [04 · Evidence](proof/README.ja.md) | 選定テストと提供状況 |
+| [05 · Business](business/opportunity.ja.md) | ユーザー、違い、事業仮説 |
+| [06 · Connect](connect/README.ja.md) | 採用、支援、協業 |
 
-これらは製品の更新履歴に記載され、[根拠の説明](proof/README.ja.md)に示すソース版と照合した機能です。測定済みの精度、利用者数、売上を主張するものではありません。現在の利用条件と可用性は製品サイトでご確認ください。
+## 提供済みの製品を使う
 
-## 次の方向 / AiSeek 2.0
+変化と根拠を読み、既存の SeekMap や構造ビューを調べ、対象をフォローし、開発者向け機能でツールを接続できます。
 
-![コンセプトアート：ネイビーの地球と透明な記録のページ。計画中の世界の文脈と根拠の履歴を表現](assets/world-and-record.jpg)
-*将来の方向性を表すアートです。以下の機能は計画段階で、提供済みではありません。*
-
-**SeekEarth：**地理と時間を軸に、変わり続ける世界をより一貫した形で見渡すための主要な体験。
-
-**SeekTrace：**根拠の記録と履歴を明確にし、「当時分かっていたこと」と「今分かっていること」を区別するための仕組み。
-
-**2026 年 10 月 15 日**時点で方向性は決まっていますが、実装は計画段階です。ここでは製品の構想のみを紹介します。
-
-## 一緒に、価値のあるものをつくる
-
-**採用：**プロダクト判断と実際の開発・提供を両立できる仕事に関心があります。[LinkedIn](https://www.linkedin.com/in/yolow92/) または[お問い合わせ](https://aiseek.dev/ja/contact)からご連絡ください。
-
-**支援と協業：**個人スポンサー、インフラやデータアクセスの支援、製品連携、投資についてのご相談を歓迎します。[AiSeek を支援](https://aiseek.dev/ja/sponsor) · [GitHub Sponsors](https://github.com/sponsors/YOLOW92) · [Ko-fi](https://ko-fi.com/aiseek)。
-
-**体験と共有：**[aiseek.dev](https://aiseek.dev/ja)。公開連絡先：[support@aiseek.dev](mailto:support@aiseek.dev)。
-
----
-
-開発では AI コーディング支援ツールを使用しています。方向性、制約、レビュー、受け入れ判断、運用は私が担当しています。本リポジトリは選定した作品紹介であり、非公開アプリケーションのソース公開ではありません。[根拠と限界](proof/README.ja.md) · [帰属と利用について](THIRD_PARTY_NOTICES.md) · 確認日 **2026-10-15**。
+[三つの体験ルート](product/tour.ja.md) · [次の方向：AiSeek 2.0](product/overview.ja.md#次の方向)

@@ -1,29 +1,28 @@
-# Evidence, with its limits
+# Evidence / Examine the behaviour
 
-[Portfolio](../README.md) · [中文](README.zh-CN.md) · [日本語](README.ja.md)
+[Portfolio](../README.md) · [English](README.md) · [简体中文](README.zh-CN.md) · [日本語](README.ja.md)
 
-Reviewed **2026-10-15** against private source revision `a05796c65f9119d4924bbaa26b5291492e47f3ed`.
+## Selected source tests
 
-## What you can inspect
+| Excerpt | Expected behaviour |
+|---|---|
+| [evidence-locator.test.ts](code-excerpts/evidence-locator.test.ts) | A claim without a locator remains HYPOTHESIS |
+| [history-length.test.ts](code-excerpts/history-length.test.ts) | History length reflects actual available days |
+| [script-identity.test.ts](code-excerpts/script-identity.test.ts) | Script variants preserve a shared identity |
+| [model-identity.test.ts](code-excerpts/model-identity.test.ts) | Different model numbers remain distinct |
+| [async-boundary.test.ts](code-excerpts/async-boundary.test.ts) | API sources do not synchronously run research |
+| [release-command.test.sh](code-excerpts/release-command.test.sh) | Malformed release commands are rejected |
 
-| Portfolio statement | Public evidence | Scope of the evidence |
-|---|---|---|
-| AiSeek is a multilingual information product | [English](https://aiseek.dev/en), [中文](https://aiseek.dev/zh), [日本語](https://aiseek.dev/ja), [release notes](https://aiseek.dev/en/changelog) | Public reading surfaces and documented releases. |
-| Evidence and corrections are part of the product | [Method](https://aiseek.dev/en/method), [corrections](https://aiseek.dev/en/corrections) | Published method and correction process, not an accuracy score. |
-| Account limits are enforced in backend code | [Depth guard](code/server-entitlements.ts) | One exact function; its dependencies and calling paths are outside this excerpt. |
-| Task budgets have explicit guards | [Budget guard](code/run-budget.ts) | One exact function; no measured cost-saving claim. |
-| Frontend dependency boundaries have a check | [Architecture test](code/frontend-boundary.test.ts) | One test excerpt; no claim of a fresh passing test run or complete security coverage. |
-| The product supports read-only integrations | [Developer guide](https://aiseek.dev/en/developers) | Published API/MCP entry points; current terms belong to the product. |
-| SeekEarth and SeekTrace are future directions | Portfolio roadmap | The private planning file marks implementation as planned at the reviewed revision. No delivered feature claim. |
+## Source record
 
-## How the code was selected
+Reviewed on 15 October 2026.
 
-The three files are **verbatim, partial excerpts** of ordinary entitlement, resource and dependency checks. Together they contain 21 source lines. They exclude imports and surrounding context and are **not standalone programs or a runnable test suite**. The [manifest](source-manifest.json) records the original path, blob identifier and line range. The application repository remains private; its links are not required for reading this portfolio.
+`400c526728efb1b8bd7d7a7b914caa65f06ff217`
 
-The excerpts intentionally leave out source inventories, operating data, core algorithms and detailed future designs. They support a discussion of engineering judgment rather than a reproduction of the application.
+[Source files and exact excerpt ranges](source-manifest.json)
 
-## What is not claimed
+## Public product evidence
 
-No visitor, customer, revenue, uptime, latency or accuracy figure is presented. Planned work is labelled as planned. Generated artwork illustrates themes, not interfaces, measurements or internal architecture. Release history is a record of published product changes; it is not a new end-to-end test result.
+[Method](https://aiseek.dev/en/method) · [Corrections](https://aiseek.dev/en/corrections) · [Release history](https://aiseek.dev/en/changelog) · [Developer guide](https://aiseek.dev/en/developers)
 
-Product behaviour changes over time. Use the [current product](https://aiseek.dev/en), [status page](https://status.aiseek.dev) and [release notes](https://aiseek.dev/en/changelog) for current availability. [Attribution and reuse](../THIRD_PARTY_NOTICES.md).
+[Delivery status and measurement](status.md)
