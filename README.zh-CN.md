@@ -16,6 +16,13 @@
 [![Smithery Listed](https://img.shields.io/badge/Smithery-Listed-orange)](https://smithery.ai/servers/wyc610721/aiseek)
 [![Better Stack Badge](https://incidents.betterstack.com/status-badges/v1/monitor/30ry9.svg)](https://incidents.betterstack.com/?utm_source=status_badge)
 
+**代码质量 · CodeScene 动态指标**
+
+![CodeScene 整体代码健康度](https://codescene.io/projects/86173/status-badges/average-code-health)
+![CodeScene 热点代码健康度](https://codescene.io/projects/86173/status-badges/hotspot-code-health)
+![CodeScene 未达成目标](https://codescene.io/projects/86173/status-badges/missed-goals)
+![CodeScene 代码知识掌握度](https://codescene.io/projects/86173/status-badges/system-mastery)
+
 ## 从信息到理解
 
 标题告诉你发生了一件事。AiSeek 把变化与背景、支撑材料、影响对象和后续观察连接起来。这份项目档案同时展示产品成果，以及我如何作出判断并把它投入运行。
