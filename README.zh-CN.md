@@ -13,6 +13,7 @@
 **真实运行的产品 · 中英日三语 · 只读 API 与 MCP**
 
 [![AiSeek MCP connector — tool definition quality and endpoint health on Glama](https://glama.ai/mcp/connectors/dev.aiseek/ai-seek/badges/score.svg)](https://glama.ai/mcp/connectors/dev.aiseek/ai-seek)
+[![smithery badge](https://smithery.ai/badge/wyc610721/aiseek)](https://smithery.ai/servers/wyc610721/aiseek)
 
 ## 从信息到理解
 
