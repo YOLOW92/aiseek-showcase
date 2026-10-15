@@ -12,6 +12,8 @@ Initiated, led and operated by **WU Yuanchao**.
 
 **Live product · Three languages · Read-only API & MCP**
 
+[![AiSeek MCP connector — tool definition quality and endpoint health on Glama](https://glama.ai/mcp/connectors/dev.aiseek/ai-seek/badges/score.svg)](https://glama.ai/mcp/connectors/dev.aiseek/ai-seek)
+
 ## From information to understanding
 
 A headline tells you something happened. AiSeek connects the change to its context, supporting passages, affected subjects and the next thing to watch. This case study shows both the product and the decisions that took it into production.
