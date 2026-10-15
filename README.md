@@ -18,10 +18,10 @@ Initiated, led and operated by **WU Yuanchao**.
 
 **Code quality · Live CodeScene metrics**
 
-![CodeScene Average Code Health](https://codescene.io/projects/86173/status-badges/average-code-health)
-![CodeScene Hotspot Code Health](https://codescene.io/projects/86173/status-badges/hotspot-code-health)
-![CodeScene Missed Goals](https://codescene.io/projects/86173/status-badges/missed-goals)
-![CodeScene System Mastery](https://codescene.io/projects/86173/status-badges/system-mastery)
+[![CodeScene Average Code Health](https://codescene.io/projects/86173/status-badges/average-code-health)](https://codescene.io/projects/86173)
+[![CodeScene Hotspot Code Health](https://codescene.io/projects/86173/status-badges/hotspot-code-health)](https://codescene.io/projects/86173)
+[![CodeScene Missed Goals](https://codescene.io/projects/86173/status-badges/missed-goals)](https://codescene.io/projects/86173)
+[![CodeScene System Mastery](https://codescene.io/projects/86173/status-badges/system-mastery)](https://codescene.io/projects/86173)
 
 ## From information to understanding
 
