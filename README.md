@@ -13,6 +13,7 @@ Initiated, led and operated by **WU Yuanchao**.
 **Live product · Three languages · Read-only API & MCP**
 
 [![AiSeek MCP connector — tool definition quality and endpoint health on Glama](https://glama.ai/mcp/connectors/dev.aiseek/ai-seek/badges/score.svg)](https://glama.ai/mcp/connectors/dev.aiseek/ai-seek)
+[![smithery badge](https://smithery.ai/badge/wyc610721/aiseek)](https://smithery.ai/servers/wyc610721/aiseek)
 
 ## From information to understanding
 
