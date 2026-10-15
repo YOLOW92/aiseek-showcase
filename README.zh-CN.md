@@ -12,6 +12,8 @@
 
 **真实运行的产品 · 中英日三语 · 只读 API 与 MCP**
 
+[![AiSeek MCP connector — tool definition quality and endpoint health on Glama](https://glama.ai/mcp/connectors/dev.aiseek/ai-seek/badges/score.svg)](https://glama.ai/mcp/connectors/dev.aiseek/ai-seek)
+
 ## 从信息到理解
 
 标题告诉你发生了一件事。AiSeek 把变化与背景、支撑材料、影响对象和后续观察连接起来。这份项目档案同时展示产品成果，以及我如何作出判断并把它投入运行。
