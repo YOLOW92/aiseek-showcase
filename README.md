@@ -16,6 +16,13 @@ Initiated, led and operated by **WU Yuanchao**.
 [![Smithery Listed](https://img.shields.io/badge/Smithery-Listed-orange)](https://smithery.ai/servers/wyc610721/aiseek)
 [![Better Stack Badge](https://incidents.betterstack.com/status-badges/v1/monitor/30ry9.svg)](https://incidents.betterstack.com/?utm_source=status_badge)
 
+**Code quality · Live CodeScene metrics**
+
+![CodeScene Average Code Health](https://codescene.io/projects/86173/status-badges/average-code-health)
+![CodeScene Hotspot Code Health](https://codescene.io/projects/86173/status-badges/hotspot-code-health)
+![CodeScene Missed Goals](https://codescene.io/projects/86173/status-badges/missed-goals)
+![CodeScene System Mastery](https://codescene.io/projects/86173/status-badges/system-mastery)
+
 ## From information to understanding
 
 A headline tells you something happened. AiSeek connects the change to its context, supporting passages, affected subjects and the next thing to watch. This case study shows both the product and the decisions that took it into production.
