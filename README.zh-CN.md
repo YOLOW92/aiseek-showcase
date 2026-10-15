@@ -20,7 +20,6 @@
 
 [![CodeScene 整体代码健康度](https://codescene.io/projects/86173/status-badges/average-code-health)](https://codescene.io/projects/86173)
 [![CodeScene 热点代码健康度](https://codescene.io/projects/86173/status-badges/hotspot-code-health)](https://codescene.io/projects/86173)
-[![CodeScene 未达成目标](https://codescene.io/projects/86173/status-badges/missed-goals)](https://codescene.io/projects/86173)
 [![CodeScene 代码知识掌握度](https://codescene.io/projects/86173/status-badges/system-mastery)](https://codescene.io/projects/86173)
 
 ## 从信息到理解
