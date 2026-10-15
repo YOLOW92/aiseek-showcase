@@ -12,6 +12,8 @@
 
 **稼働中の製品 · 三言語 · 読み取り専用 API・MCP**
 
+[![AiSeek MCP connector — tool definition quality and endpoint health on Glama](https://glama.ai/mcp/connectors/dev.aiseek/ai-seek/badges/score.svg)](https://glama.ai/mcp/connectors/dev.aiseek/ai-seek)
+
 ## 情報から理解へ
 
 見出しは出来事を伝えます。AiSeek はその変化を背景、根拠の該当箇所、関係する対象、次の観察につなぎます。この事例は製品と、それを実運用に導いた判断を紹介します。
