@@ -20,7 +20,6 @@
 
 [![CodeScene 平均コード健全性](https://codescene.io/projects/86173/status-badges/average-code-health)](https://codescene.io/projects/86173)
 [![CodeScene ホットスポットのコード健全性](https://codescene.io/projects/86173/status-badges/hotspot-code-health)](https://codescene.io/projects/86173)
-[![CodeScene 未達成の目標](https://codescene.io/projects/86173/status-badges/missed-goals)](https://codescene.io/projects/86173)
 [![CodeScene システム習熟度](https://codescene.io/projects/86173/status-badges/system-mastery)](https://codescene.io/projects/86173)
 
 ## 情報から理解へ
