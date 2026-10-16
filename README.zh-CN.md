@@ -8,7 +8,9 @@
 
 [English](README.md) · [简体中文](README.zh-CN.md) · [日本語](README.ja.md)
 
-[体验主站](https://aiseek.dev/zh) · [LinkedIn](https://www.linkedin.com/in/yolow92/) · [联系我](connect/README.zh-CN.md)
+[体验主站](https://aiseek.dev/zh) · [Product Hunt 发布页](https://www.producthunt.com/products/aiseek) · [LinkedIn](https://www.linkedin.com/in/yolow92/) · [联系我](connect/README.zh-CN.md)
+
+[![AiSeek launched on Product Hunt](https://img.shields.io/badge/Product%20Hunt-Launched-DA552F?logo=producthunt&logoColor=white)](https://www.producthunt.com/products/aiseek)
 
 **真实运行的产品 · 中英日三语 · 只读 API 与 MCP**
 
