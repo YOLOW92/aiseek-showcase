@@ -33,7 +33,7 @@ The production service's uptime is public.
 
 ### Third-party recognition
 
-![AiSeek - Track global changes with evidence and context | Product Hunt](https://api.producthunt.com/widgets/embed-image/v1/featured.svg?post_id=1281158&theme=light&t=1792141368596)
+[![AiSeek - Track global changes with evidence and context | Product Hunt](https://api.producthunt.com/widgets/embed-image/v1/featured.svg?post_id=1281158&theme=light&t=1792145920073)](https://www.producthunt.com/products/aiseek?embed=true&utm_source=badge-featured&utm_medium=badge&utm_campaign=badge-aiseek)
 
 Featured on Product Hunt.
 
