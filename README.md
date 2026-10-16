@@ -8,7 +8,9 @@ Initiated, led and operated by **WU Yuanchao**.
 
 [English](README.md) · [简体中文](README.zh-CN.md) · [日本語](README.ja.md)
 
-[Live product](https://aiseek.dev/en) · [LinkedIn](https://www.linkedin.com/in/yolow92/) · [Contact](connect/README.md)
+[Live product](https://aiseek.dev/en) · [Product Hunt launch](https://www.producthunt.com/products/aiseek) · [LinkedIn](https://www.linkedin.com/in/yolow92/) · [Contact](connect/README.md)
+
+[![AiSeek launched on Product Hunt](https://img.shields.io/badge/Product%20Hunt-Launched-DA552F?logo=producthunt&logoColor=white)](https://www.producthunt.com/products/aiseek)
 
 **Live product · Three languages · Read-only API & MCP**
 
