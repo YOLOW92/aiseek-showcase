@@ -8,7 +8,9 @@
 
 [English](README.md) · [简体中文](README.zh-CN.md) · [日本語](README.ja.md)
 
-[製品を使う](https://aiseek.dev/ja) · [LinkedIn](https://www.linkedin.com/in/yolow92/) · [お問い合わせ](connect/README.ja.md)
+[製品を使う](https://aiseek.dev/ja) · [Product Hunt 公開ページ](https://www.producthunt.com/products/aiseek) · [LinkedIn](https://www.linkedin.com/in/yolow92/) · [お問い合わせ](connect/README.ja.md)
+
+[![AiSeek launched on Product Hunt](https://img.shields.io/badge/Product%20Hunt-Launched-DA552F?logo=producthunt&logoColor=white)](https://www.producthunt.com/products/aiseek)
 
 **稼働中の製品 · 三言語 · 読み取り専用 API・MCP**
 
