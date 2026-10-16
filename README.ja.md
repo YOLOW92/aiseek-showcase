@@ -36,6 +36,59 @@
 
 **技術構成：** TypeScript · React Router · Fastify · Python · PostgreSQL · pgvector · PGroonga · Apache AGE · pg-boss。
 
+## 実装と検証
+
+実際の実装とテストから抜粋。周辺のインポートとテスト準備は省略しています。
+
+**型安全な API 境界**
+
+実行時のスキーマ検証によって入力の型を推論し、不正な入力は共通の API エラーとして扱います。
+
+```typescript
+export function parse<T extends z.ZodTypeAny>(
+  schema: T, input: unknown
+): z.infer<T> {
+  const r = schema.safeParse(input);
+  if (!r.success) throw new AppError(
+    "BAD_REQUEST",
+    r.error.issues
+      .map((i) => `${i.path.join(".")}: ${i.message}`)
+      .join("; ")
+  );
+  return r.data;
+}
+```
+
+**上限のあるネットワーク読み取り**
+
+応答がバイト上限を超えると読み取りを中止し、全体をメモリーに保持してから判定することを避けます。
+
+```typescript
+for (;;) {
+  const { done, value } = await reader.read();
+  if (done) break;
+  total += value.byteLength;
+  if (total > maxBytes) {
+    await reader.cancel();
+    throw new SsrfError(`Response exceeds ${maxBytes} bytes`);
+  }
+  chunks.push(value);
+}
+```
+
+**多言語の回帰テスト**
+
+中国語の繁簡体や日本語の漢字表記が同じエンティティに対応することを確認します。
+
+```typescript
+it("folds traditional Chinese and Japanese kanji to simplified", () => {
+  expect(nameKey("日本銀行")).toBe(nameKey("日本银行"));
+  expect(nameKey("臺積電")).toBe(nameKey("台积电"));
+  expect(nameKey("経済産業省")).toBe(nameKey("经济产业省"));
+  expect(nameKey("台風27号")).toBe(nameKey("台风27号"));
+});
+```
+
 ## API と MCP
 
 公開済みの変化、出典リンク、企業、発表カレンダー、根拠の履歴を読み取り専用で提供。ツール呼び出しには個人キーを使い、サーバー側で権限と利用枠を確認します。非公開リサーチは公開出力に含めません。
@@ -48,7 +101,7 @@
 
 ## 開発者 WU Yuanchao
 
-AiSeek を発案・主導・運営し、製品の方向性、技術の判断、受け入れ、リリースを担っています。このリポジトリは製品と技術の成果を紹介するもので、アプリケーションのソースは非公開です。
+AiSeek を発案・主導・運営し、製品の方向性、技術の判断、受け入れ、リリースを担っています。選定したコード抜粋は公開レビュー用で、アプリケーション全体のソースは非公開です。
 
 [LinkedIn](https://www.linkedin.com/in/yolow92/) · [GitHub](https://github.com/YOLOW92) · [メール](mailto:support@aiseek.dev) · [AiSeek を支援](https://aiseek.dev/ja/sponsor)
 

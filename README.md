@@ -36,6 +36,59 @@ Track important changes across technology, the economy, policy and companies, wi
 
 **Stack:** TypeScript · React Router · Fastify · Python · PostgreSQL · pgvector · PGroonga · Apache AGE · pg-boss.
 
+## Implementation highlights
+
+Selected production and test excerpts; surrounding imports and fixture setup are omitted.
+
+**Typed API boundaries**
+
+Schema validation turns unknown input into an inferred TypeScript type, or a consistent API error.
+
+```typescript
+export function parse<T extends z.ZodTypeAny>(
+  schema: T, input: unknown
+): z.infer<T> {
+  const r = schema.safeParse(input);
+  if (!r.success) throw new AppError(
+    "BAD_REQUEST",
+    r.error.issues
+      .map((i) => `${i.path.join(".")}: ${i.message}`)
+      .join("; ")
+  );
+  return r.data;
+}
+```
+
+**Bounded network reads**
+
+The streaming reader cancels a response once it exceeds the byte budget, before buffering the entire body.
+
+```typescript
+for (;;) {
+  const { done, value } = await reader.read();
+  if (done) break;
+  total += value.byteLength;
+  if (total > maxBytes) {
+    await reader.cancel();
+    throw new SsrfError(`Response exceeds ${maxBytes} bytes`);
+  }
+  chunks.push(value);
+}
+```
+
+**Multilingual regression coverage**
+
+These tests preserve a shared entity identity across Chinese and Japanese writing variants.
+
+```typescript
+it("folds traditional Chinese and Japanese kanji to simplified", () => {
+  expect(nameKey("日本銀行")).toBe(nameKey("日本银行"));
+  expect(nameKey("臺積電")).toBe(nameKey("台积电"));
+  expect(nameKey("経済産業省")).toBe(nameKey("经济产业省"));
+  expect(nameKey("台風27号")).toBe(nameKey("台风27号"));
+});
+```
+
 ## API & MCP
 
 Read-only access to published changes, source links, companies, release calendars and evidence history. Tool calls use personal API keys with server-enforced permissions and quotas; private research stays outside public output.
@@ -48,7 +101,7 @@ Read-only access to published changes, source links, companies, release calendar
 
 ## Built by WU Yuanchao
 
-I initiated, lead and operate AiSeek, owning product direction, technical decisions, acceptance and releases. This showcase presents the product and its engineering; application source remains private.
+I initiated, lead and operate AiSeek, owning product direction, technical decisions, acceptance and releases. Selected code excerpts are public for review; the full application remains private.
 
 [LinkedIn](https://www.linkedin.com/in/yolow92/) · [GitHub](https://github.com/YOLOW92) · [Email](mailto:support@aiseek.dev) · [Support AiSeek](https://aiseek.dev/en/sponsor)
 

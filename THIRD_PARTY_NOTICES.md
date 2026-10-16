@@ -2,11 +2,11 @@
 
 AiSeek’s product licences and attributions: [English](https://aiseek.dev/en/credits) · [中文](https://aiseek.dev/zh/credits) · [日本語](https://aiseek.dev/ja/credits).
 
-本展示的文字和原创图示由 WU Yuanchao 发布，用于成果展示；复用请联系作者。产品源码不随展示提供。
+本展示的文字和原创图示由 WU Yuanchao 发布，用于成果展示；复用请联系作者。完整产品源码保持私有；精选代码片段用于公开审阅。
 
-Portfolio text and original visuals are published by WU Yuanchao for presentation. Contact the author for reuse. Product source code is not distributed with this showcase.
+Portfolio text and original visuals are published by WU Yuanchao for presentation. Contact the author for reuse. The full product source remains private; selected code excerpts are published for review.
 
-紹介文と独自の図は WU Yuanchao が成果紹介のために公開しています。再利用は作者にお問い合わせください。製品のソースコードは配布していません。
+紹介文と独自の図は WU Yuanchao が成果紹介のために公開しています。再利用は作者にお問い合わせください。製品全体のソースは非公開で、選定したコード抜粋のみレビュー用に公開しています。
 
 ## Design and diagram tooling / 设计与绘图工具 / デザイン・作図ツール
 
