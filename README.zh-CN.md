@@ -38,11 +38,11 @@
 
 ## 实现与验证
 
-以下选自真实实现与测试，省略外围导入和测试准备代码。
+精选真实实现与测试，省略导入和外围准备代码。每段对应一个具体的工程判断。
 
-**类型安全的 API 边界**
+**01 · 类型安全的 API 边界**
 
-输入经过运行时 Schema 校验后获得 TypeScript 推导类型，失败则进入统一 API 错误处理。
+运行时校验未知输入，同时保留 TypeScript 对返回类型的推导。
 
 ```typescript
 export function parse<T extends z.ZodTypeAny>(
@@ -59,9 +59,78 @@ export function parse<T extends z.ZodTypeAny>(
 }
 ```
 
-**有界的网络读取**
+**02 · 双层所有权校验**
 
-响应超过字节预算时立即取消读取，避免先缓存整个响应再判断大小。
+先在用户数据库上下文中读取，再显式检查所有权；不存在与无权访问的任务均返回 NOT_FOUND。
+
+```typescript
+async function loadOwned(pool: Pool, userId: string, runId: string) {
+  const run = await withTx(
+    pool, asUser(userId), (tx) => research.getRun(tx, runId)
+  );
+  if (!run || run.userId !== userId)
+    throw new AppError("NOT_FOUND", "research run");
+  return run;
+}
+```
+
+**03 · 事务生命周期与资源清理**
+
+事务内设置访问上下文，成功后才提交；回滚也失败时保留原始错误，并始终释放连接。
+
+```typescript
+export async function withTx<T>(
+  pool: Pool, ctx: DbContext,
+  fn: (tx: Queryable) => Promise<T>
+): Promise<T> {
+  const client = await pool.connect();
+  try {
+    await client.query("BEGIN");
+    await applyContext(client, ctx);
+    const result = await fn(client);
+    await client.query("COMMIT");
+    return result;
+  } catch (err) {
+    try {
+      await client.query("ROLLBACK");
+    } catch {
+    }
+    throw err;
+  } finally {
+    client.release();
+  }
+}
+```
+
+**04 · 类型约束的后台任务派发**
+
+任务名与载荷类型绑定，入队前校验数据契约，并支持去重、延迟执行与优先级控制。
+
+```typescript
+export class Queue {
+  constructor(private readonly boss: PgBoss) {}
+
+  async send<Q extends QueueName>(
+    queue: Q, payload: JobPayload<Q>,
+    opts: EnqueueOptions = {}
+  ): Promise<string | null> {
+    const envelope = newEnvelope(queue, payload, {
+      actor: opts.actor, correlationId: opts.correlationId
+    });
+    parseJob(queue, envelope); // throws on contract violation
+    const options: SendOptions = {};
+    if (opts.singletonKey) options.singletonKey = opts.singletonKey;
+    if (opts.singletonSeconds) options.singletonSeconds = opts.singletonSeconds;
+    if (opts.startAfter !== undefined) options.startAfter = opts.startAfter;
+    if (opts.priority !== undefined) options.priority = opts.priority;
+    return this.boss.send(queue, envelope as unknown as object, options);
+  }
+}
+```
+
+**05 · 有界的网络读取**
+
+响应超过字节预算时取消读取，避免先缓存整个响应再判断大小。
 
 ```typescript
 for (;;) {
@@ -76,9 +145,27 @@ for (;;) {
 }
 ```
 
-**多语言回归覆盖**
+**06 · 不掩盖客户端错误的降级**
 
-用测试保证中文繁简体与日文汉字变体仍能对应同一个实体。
+公开页面在后端故障时使用回退结果，同时保留大部分客户端错误；限流作为可恢复情况处理。
+
+```typescript
+export async function safe<T>(p: Promise<T>, fallback: T): Promise<T> {
+  try {
+    return await p;
+  } catch (e) {
+    if (
+      e instanceof ApiFailure &&
+      e.status >= 400 && e.status < 500 && e.status !== 429
+    ) throw e;
+    return fallback;
+  }
+}
+```
+
+**07 · 多语言实体身份的回归测试**
+
+用测试保护中文繁简体与日文汉字变体之间的实体一致性。
 
 ```typescript
 it("folds traditional Chinese and Japanese kanji to simplified", () => {
@@ -87,6 +174,19 @@ it("folds traditional Chinese and Japanese kanji to simplified", () => {
   expect(nameKey("経済産業省")).toBe(nameKey("经济产业省"));
   expect(nameKey("台風27号")).toBe(nameKey("台风27号"));
 });
+```
+
+**08 · 历史精度的回归测试**
+
+记录开始之前只回答是否存在，不推断过去的状态；测试防止把今天的主张类别带回历史查询。
+
+```typescript
+const r = at(A, rows, d("10-10"), d("09-20"));
+expect(r).toMatchObject({
+  precision: "EXISTENCE_ONLY", existed: true,
+  state: null, evidence: null, knownSince: baseline
+});
+expect(JSON.stringify(r)).not.toMatch(/FACT|HYPOTHESIS/);
 ```
 
 ## API 与 MCP

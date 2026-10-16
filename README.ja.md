@@ -38,11 +38,11 @@
 
 ## 実装と検証
 
-実際の実装とテストから抜粋。周辺のインポートとテスト準備は省略しています。
+実際の実装とテストを抜粋。インポートと周辺の準備は省略し、それぞれが示す技術的な判断を説明しています。
 
-**型安全な API 境界**
+**01 · 型安全な API 境界**
 
-実行時のスキーマ検証によって入力の型を推論し、不正な入力は共通の API エラーとして扱います。
+未知の入力を実行時に検証し、TypeScript が推論する戻り値の型を維持します。
 
 ```typescript
 export function parse<T extends z.ZodTypeAny>(
@@ -59,9 +59,78 @@ export function parse<T extends z.ZodTypeAny>(
 }
 ```
 
-**上限のあるネットワーク読み取り**
+**02 · 二層の所有者確認**
 
-応答がバイト上限を超えると読み取りを中止し、全体をメモリーに保持してから判定することを避けます。
+利用者のデータベースコンテキストで取得した後、所有者も明示的に確認します。不存在とアクセス不可はいずれも NOT_FOUND を返します。
+
+```typescript
+async function loadOwned(pool: Pool, userId: string, runId: string) {
+  const run = await withTx(
+    pool, asUser(userId), (tx) => research.getRun(tx, runId)
+  );
+  if (!run || run.userId !== userId)
+    throw new AppError("NOT_FOUND", "research run");
+  return run;
+}
+```
+
+**03 · トランザクションと後処理**
+
+処理が成功してからコミットします。ロールバックも失敗した場合は元のエラーを保持し、接続は必ず解放します。
+
+```typescript
+export async function withTx<T>(
+  pool: Pool, ctx: DbContext,
+  fn: (tx: Queryable) => Promise<T>
+): Promise<T> {
+  const client = await pool.connect();
+  try {
+    await client.query("BEGIN");
+    await applyContext(client, ctx);
+    const result = await fn(client);
+    await client.query("COMMIT");
+    return result;
+  } catch (err) {
+    try {
+      await client.query("ROLLBACK");
+    } catch {
+    }
+    throw err;
+  } finally {
+    client.release();
+  }
+}
+```
+
+**04 · 型で制約するバックグラウンド処理**
+
+キュー名とペイロード型を対応させ、保存前に契約を検証。重複抑制、実行時刻、優先度を指定できます。
+
+```typescript
+export class Queue {
+  constructor(private readonly boss: PgBoss) {}
+
+  async send<Q extends QueueName>(
+    queue: Q, payload: JobPayload<Q>,
+    opts: EnqueueOptions = {}
+  ): Promise<string | null> {
+    const envelope = newEnvelope(queue, payload, {
+      actor: opts.actor, correlationId: opts.correlationId
+    });
+    parseJob(queue, envelope); // throws on contract violation
+    const options: SendOptions = {};
+    if (opts.singletonKey) options.singletonKey = opts.singletonKey;
+    if (opts.singletonSeconds) options.singletonSeconds = opts.singletonSeconds;
+    if (opts.startAfter !== undefined) options.startAfter = opts.startAfter;
+    if (opts.priority !== undefined) options.priority = opts.priority;
+    return this.boss.send(queue, envelope as unknown as object, options);
+  }
+}
+```
+
+**05 · 上限のあるネットワーク読み取り**
+
+応答がバイト上限を超えると読み取りを中止し、全体を保持してから判定することを避けます。
 
 ```typescript
 for (;;) {
@@ -76,9 +145,27 @@ for (;;) {
 }
 ```
 
-**多言語の回帰テスト**
+**06 · クライアントエラーを隠さない縮退**
 
-中国語の繁簡体や日本語の漢字表記が同じエンティティに対応することを確認します。
+バックエンドの障害時は代替結果を使い、大半のクライアントエラーはそのまま伝えます。レート制限は回復可能な場合として扱います。
+
+```typescript
+export async function safe<T>(p: Promise<T>, fallback: T): Promise<T> {
+  try {
+    return await p;
+  } catch (e) {
+    if (
+      e instanceof ApiFailure &&
+      e.status >= 400 && e.status < 500 && e.status !== 429
+    ) throw e;
+    return fallback;
+  }
+}
+```
+
+**07 · 多言語エンティティの回帰テスト**
+
+中国語の繁簡体や日本語の漢字表記が、同じエンティティに対応することを確認します。
 
 ```typescript
 it("folds traditional Chinese and Japanese kanji to simplified", () => {
@@ -87,6 +174,19 @@ it("folds traditional Chinese and Japanese kanji to simplified", () => {
   expect(nameKey("経済産業省")).toBe(nameKey("经济产业省"));
   expect(nameKey("台風27号")).toBe(nameKey("台风27号"));
 });
+```
+
+**08 · 履歴の精度を守る回帰テスト**
+
+記録開始より前は存在のみを返し、過去の状態を推測しません。現在の主張分類が履歴の回答へ混入することを防ぎます。
+
+```typescript
+const r = at(A, rows, d("10-10"), d("09-20"));
+expect(r).toMatchObject({
+  precision: "EXISTENCE_ONLY", existed: true,
+  state: null, evidence: null, knownSince: baseline
+});
+expect(JSON.stringify(r)).not.toMatch(/FACT|HYPOTHESIS/);
 ```
 
 ## API と MCP

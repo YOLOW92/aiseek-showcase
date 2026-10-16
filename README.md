@@ -38,11 +38,11 @@ Track important changes across technology, the economy, policy and companies, wi
 
 ## Implementation highlights
 
-Selected production and test excerpts; surrounding imports and fixture setup are omitted.
+Selected production and test excerpts. Imports and surrounding setup are omitted; each excerpt demonstrates a specific engineering decision.
 
-**Typed API boundaries**
+**01 · Typed API boundaries**
 
-Schema validation turns unknown input into an inferred TypeScript type, or a consistent API error.
+Validate unknown input at runtime while preserving the inferred TypeScript return type.
 
 ```typescript
 export function parse<T extends z.ZodTypeAny>(
@@ -59,9 +59,78 @@ export function parse<T extends z.ZodTypeAny>(
 }
 ```
 
-**Bounded network reads**
+**02 · Ownership enforced in two layers**
 
-The streaming reader cancels a response once it exceeds the byte budget, before buffering the entire body.
+Read under the user’s database context and check ownership explicitly. Missing and inaccessible runs both return NOT_FOUND.
+
+```typescript
+async function loadOwned(pool: Pool, userId: string, runId: string) {
+  const run = await withTx(
+    pool, asUser(userId), (tx) => research.getRun(tx, runId)
+  );
+  if (!run || run.userId !== userId)
+    throw new AppError("NOT_FOUND", "research run");
+  return run;
+}
+```
+
+**03 · Transaction lifecycle and cleanup**
+
+Apply the access context inside the transaction, commit only after success, and preserve the original error if rollback also fails. Always release the connection.
+
+```typescript
+export async function withTx<T>(
+  pool: Pool, ctx: DbContext,
+  fn: (tx: Queryable) => Promise<T>
+): Promise<T> {
+  const client = await pool.connect();
+  try {
+    await client.query("BEGIN");
+    await applyContext(client, ctx);
+    const result = await fn(client);
+    await client.query("COMMIT");
+    return result;
+  } catch (err) {
+    try {
+      await client.query("ROLLBACK");
+    } catch {
+    }
+    throw err;
+  } finally {
+    client.release();
+  }
+}
+```
+
+**04 · Typed background dispatch**
+
+Tie payload types to queue names, validate the envelope before persistence, and pass optional singleton, scheduling and priority controls to the durable queue.
+
+```typescript
+export class Queue {
+  constructor(private readonly boss: PgBoss) {}
+
+  async send<Q extends QueueName>(
+    queue: Q, payload: JobPayload<Q>,
+    opts: EnqueueOptions = {}
+  ): Promise<string | null> {
+    const envelope = newEnvelope(queue, payload, {
+      actor: opts.actor, correlationId: opts.correlationId
+    });
+    parseJob(queue, envelope); // throws on contract violation
+    const options: SendOptions = {};
+    if (opts.singletonKey) options.singletonKey = opts.singletonKey;
+    if (opts.singletonSeconds) options.singletonSeconds = opts.singletonSeconds;
+    if (opts.startAfter !== undefined) options.startAfter = opts.startAfter;
+    if (opts.priority !== undefined) options.priority = opts.priority;
+    return this.boss.send(queue, envelope as unknown as object, options);
+  }
+}
+```
+
+**05 · Bounded network reads**
+
+Cancel a response once it exceeds the byte budget, before buffering the entire body.
 
 ```typescript
 for (;;) {
@@ -76,9 +145,27 @@ for (;;) {
 }
 ```
 
-**Multilingual regression coverage**
+**06 · Graceful degradation without hiding client errors**
 
-These tests preserve a shared entity identity across Chinese and Japanese writing variants.
+Let public loaders recover from backend failures while keeping most client errors visible. Rate limiting is handled as a recoverable case.
+
+```typescript
+export async function safe<T>(p: Promise<T>, fallback: T): Promise<T> {
+  try {
+    return await p;
+  } catch (e) {
+    if (
+      e instanceof ApiFailure &&
+      e.status >= 400 && e.status < 500 && e.status !== 429
+    ) throw e;
+    return fallback;
+  }
+}
+```
+
+**07 · Multilingual identity regression tests**
+
+Protect a shared entity identity across Chinese and Japanese writing variants.
 
 ```typescript
 it("folds traditional Chinese and Japanese kanji to simplified", () => {
@@ -87,6 +174,19 @@ it("folds traditional Chinese and Japanese kanji to simplified", () => {
   expect(nameKey("経済産業省")).toBe(nameKey("经济产业省"));
   expect(nameKey("台風27号")).toBe(nameKey("台风27号"));
 });
+```
+
+**08 · Historical precision regression test**
+
+Before recorded history begins, return existence only and no inferred past state. The test prevents today’s claim class from leaking into historical answers.
+
+```typescript
+const r = at(A, rows, d("10-10"), d("09-20"));
+expect(r).toMatchObject({
+  precision: "EXISTENCE_ONLY", existed: true,
+  state: null, evidence: null, knownSince: baseline
+});
+expect(JSON.stringify(r)).not.toMatch(/FACT|HYPOTHESIS/);
 ```
 
 ## API & MCP
