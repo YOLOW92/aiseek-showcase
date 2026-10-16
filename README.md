@@ -10,7 +10,7 @@ Initiated, led and operated by **WU Yuanchao**.
 
 [Live product](https://aiseek.dev/en) · [Product Hunt launch](https://www.producthunt.com/products/aiseek) · [LinkedIn](https://www.linkedin.com/in/yolow92/) · [Contact](connect/README.md)
 
-[![AiSeek launched on Product Hunt](https://img.shields.io/badge/Product%20Hunt-Launched-DA552F?logo=producthunt&logoColor=white)](https://www.producthunt.com/products/aiseek)
+<a href="https://www.producthunt.com/products/aiseek?embed=true&amp;utm_source=badge-featured&amp;utm_medium=badge&amp;utm_campaign=badge-aiseek" target="_blank" rel="noopener noreferrer"><img alt="AiSeek - Track global changes with evidence and context | Product Hunt" width="250" height="54" src="https://api.producthunt.com/widgets/embed-image/v1/featured.svg?post_id=1281158&amp;theme=light&amp;t=1792141368596"></a>
 
 **Live product · Three languages · Read-only API & MCP**
 
